@@ -28,7 +28,7 @@ Brand.query.filter(Brand.id == 8)
 
 # Get all models with the **name** Corvette and the **brand_name** Chevrolet.
 
-Brand.query.filter(Model.name == 'Corvette', Model.brand_name == 'Chevrolet')
+Brand.query.filter((Model.name == 'Corvette') & (Model.brand_name == 'Chevrolet')
 
 # Get all models that are older than 1960.
 
@@ -59,8 +59,9 @@ Model.query.filter(Model.brand_name != 'Chevrolet')
 def get_model_info(year):
     '''Takes in a year, and prints out each model, brand_name, and brand
     headquarters for that year using only ONE database query.'''
-
-    pass
+    model_info = db.session.query(Model.name, Model.brand_name, )
+    
+    return model_info.all()
 
 def get_brands_summary():
     '''Prints out each brand name, and each model name for that brand
