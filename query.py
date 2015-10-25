@@ -86,5 +86,12 @@ def get_models_between(start_year, end_year):
 
 # 1. What is the returned value and datatype of ``Brand.query.filter_by(name='Ford')``?
 
+Right now, this returns an object at the address 0x103645710. However, the SQL that this 
+statement creates (SELECT * FROM Brands WHERE name = 'Ford';)will return the object 
+"1|Ford|1903|Dearborn, MI". 
+
 # 2. In your own words, what is an association table, and what *type* of relationship
 # does an association table manage?
+
+Association tables help illustrate many-to-many relationships and exist only to 
+connect tables together.
