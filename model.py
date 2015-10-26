@@ -18,8 +18,7 @@ class Model(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     year = db.Column(db.Integer)
-    brand_name = db.Column(db.String(50), nullable=True, db.ForeignKey('brands.name'))
-    model_brand = db.relationship('Brand')
+    brand_name = db.Column(db.String(50), nullable=True)
     name = db.Column(db.String(50), nullable=False)
  
     def __repr__(self):
@@ -31,8 +30,7 @@ class Brand(db.Model):
     __tablename__ = "brands"
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(50), nullable=False, db.ForeignKey('models.brand_name'))
-    brand_name = db.relationship('Model')
+    name = db.Column(db.String(50), nullable=False)
     founded = db.Column(db.Integer)
     headquaters = db.Column(db.String(50))
     discontinued = db.Column(db.Integer, nullable=False)
