@@ -68,7 +68,7 @@ def get_brands_summary():
      using only ONE database query.'''
 
      brand_models= db.session.query(Model.brand_name, Model.name)
-     return brand_models
+     return brand_models.all()
 
 # -------------------------------------------------------------------
 
