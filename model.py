@@ -32,7 +32,7 @@ class Brand(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), nullable=False)
     founded = db.Column(db.Integer)
-    headquaters = db.Column(db.String(50))
+    headquarters = db.Column(db.String(50))
     discontinued = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):

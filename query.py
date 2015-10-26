@@ -59,7 +59,7 @@ Model.query.filter(Model.brand_name != 'Chevrolet')
 def get_model_info(year):
     '''Takes in a year, and prints out each model, brand_name, and brand
     headquarters for that year using only ONE database query.'''
-    model_info = db.session.query(Model.name, Model.brand_name, Brand.headquaters).filter(Model.year == year)
+    model_info = db.session.query(Model.name, Model.brand_name, Brand.headquarters).join(Brand).filter(Model.year == year)
     
     return model_info
 
