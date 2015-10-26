@@ -24,42 +24,42 @@ init_app()
 
 # Get the brand with the **id** of 8.
 
-Brand.query.filter(Brand.id == 8)
+Brand.query.filter(Brand.id == 8).first()
 
 # Get all models with the **name** Corvette and the **brand_name** Chevrolet.
 
-Brand.query.filter((Model.name == 'Corvette') & (Model.brand_name == 'Chevrolet')
+Brand.query.filter((Model.name == 'Corvette') & (Model.brand_name == 'Chevrolet').all()
 
 # Get all models that are older than 1960.
 
-Model.query.filter(Model.year < 1960)
+Model.query.filter(Model.year < 1960).all()
 
 # Get all brands that were founded after 1920.
 
-Brand.query.filter(Brand.founded > 1920)
+Brand.query.filter(Brand.founded > 1920).all()
 
 # Get all models with names that begin with "Cor".
 
-Model.query.filter(Model.name.like('Cor%'))
+Model.query.filter(Model.name.like('Cor%')).all()
 
 # Get all brands with that were founded in 1903 and that are not yet discontinued.
 
-Brand.query.filter((Brand.founded == 1903) & ( Brand.discontinued == None))
+Brand.query.filter((Brand.founded == 1903) & ( Brand.discontinued == None)).all()
 
 # Get all brands with that are either discontinued or founded before 1950.
 
-Brand.query.filter((Brand.founded <= 1950) | ( Brand.discontinued !=None))
+Brand.query.filter((Brand.founded <= 1950) | ( Brand.discontinued !=None)).all()
 
 # Get any model whose brand_name is not Chevrolet.
 
-Model.query.filter(Model.brand_name != 'Chevrolet')
+Model.query.filter(Model.brand_name != 'Chevrolet').all()
 
 # Fill in the following functions. (See directions for more info.)
 
 def get_model_info(year):
     '''Takes in a year, and prints out each model, brand_name, and brand
     headquarters for that year using only ONE database query.'''
-    model_info = db.session.query(Model.name, Model.brand_name, )
+    model_info = db.session.query(Model.name, Model.brand_name,  )
     
     return model_info.all()
 
@@ -67,7 +67,8 @@ def get_brands_summary():
     '''Prints out each brand name, and each model name for that brand
      using only ONE database query.'''
 
-    pass
+     brand_models= db.session.query(Model.brand_name, Model.name)
+     return brand_models
 
 # -------------------------------------------------------------------
 
@@ -78,7 +79,8 @@ def search_brands_by_name(mystr):
 
 
 def get_models_between(start_year, end_year):
-    pass
+    
+    models_between = db.session.query((Model.year > start_year) & (Model.year < end_year))
 
 # -------------------------------------------------------------------
 
